@@ -1,0 +1,13 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/hw5-cs587/hw5-cs587', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/hw5-cs587/hw5-cs587']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'hw5-cs587', '--image', 'gcr.io/hw5-cs587/hw5-cs587', '--region', 'us-central1', '--platform', 'managed','--port','80']
+images:
+- gcr.io/hw5-cs587/hw5-cs587

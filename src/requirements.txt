@@ -1,0 +1,10 @@
+Flask
+requests
+datetime
+numpy
+matplotlib
+scikit-learn
+tensorflow
+github
+pandas
+statsmodels
